@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reordena y opera</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== CABECERA ========== -->
+  <header class="cabecera">
+    <a href="https://eltourdemates.wordpress.com/" class="logo-enlace">
+      <img src="img/logo.svg" alt="El Tour de Mates" class="logo">
+    </a>
+    <div class="titulo">
+      <h1>🚴‍♀️ Reordena y opera 🚴‍♂️</h1>
+      <p class="marca"><i>Estrategias de cálculo mental</i></p>
+    </div>
+  </header>
+
+
+  <!-- ========== PANTALLA 1: CONFIGURACIÓN ========== -->
+  <div id="pantalla-config" class="tarjeta">
+
+    Nivel: los números (value) son los mismos que usa script.js -->
+    <label for="nivel">Nivel</label>
+    <select id="nivel">
+      <option value="11">Reordena y opera (nivel Tour de Mates)</option>
+      <!-- <option value="1">++1ºy3º</option> -->
+      <!-- <option value="2">++2ºy3º</option> -->
+      <!-- <option value="3">++1ºy2º</option> -->
+      <!-- <option value="4">+-1ºy3º</option> -->
+      <!-- <option value="5">+-2ºy3º</option> -->
+      <!-- <option value="6">+-1ºy2º</option> -->
+    </select>
+
+    <!-- Modo de juego: cada opción es una tarjeta que se puede pulsar -->
+    <fieldset>
+      <legend>Modo de juego</legend>
+      <label class="opcion">
+        <input type="radio" name="modo" value="120" checked>
+          <span style="display: inline !important; white-space: nowrap !important;"><strong>120 operaciones</strong> <small style="display: inline !important;">Sin límite de tiempo</small></span>
+      </label>
+      <label class="opcion">
+        <input type="radio" name="modo" value="3">
+        <span>
+          <span style="display: inline !important; white-space: nowrap !important;"><strong>Contrarreloj 3 min</strong> <small style="display: inline !important;">Haz todas las que puedas</small></span>
+      </label>
+      <label class="opcion">
+        <input type="radio" name="modo" value="5">
+        <span>
+          <span style="display: inline !important; white-space: nowrap !important;"><strong>Contrarreloj 5 min</strong> <small style="display: inline !important;">Haz todas las que puedas</small></span>
+      </label>
+    </fieldset>
+
+    <button id="btn-empezar" class="boton boton-principal">Empezar</button>
+  </div>
+
+
+  <!-- ========== PANTALLA 2: PRÁCTICA ========== -->
+  <!-- "hidden" hace que la pantalla empiece oculta -->
+  <div id="pantalla-practica" class="tarjeta" hidden>
+
+    <!-- Progreso y reloj -->
+    <div class="marcador">
+      <span id="progreso">Operación 1/120</span>
+      <span id="reloj">⏱️ 00:00</span>
+    </div>
+    <div class="barra">
+      <div id="barra-relleno" class="barra-relleno"></div>
+    </div>
+
+    <!-- Operación y respuesta -->
+    <form id="caja-operacion" class="caja-operacion" autocomplete="off">
+      <p id="texto-operacion" class="operacion"></p>
+      <!-- inputmode="numeric" saca el teclado numérico en el móvil -->
+      <input id="respuesta" type="text" inputmode="numeric" placeholder="Tu respuesta">
+      <button type="submit" class="boton boton-principal">Comprobar</button>
+    </form>
+
+    <!-- Contador de aciertos y fallos -->
+    <p class="contador">✅ <span id="aciertos">0</span> &nbsp; ❌ <span id="fallos">0</span></p>
+
+    <!-- Lista de operaciones respondidas -->
+    <ul id="lista-operaciones" class="lista-operaciones"></ul>
+
+    <button id="btn-salir" class="boton boton-secundario">Salir</button>
+  </div>
+
+
+  <!-- ========== PANTALLA 3: RESULTADOS ========== -->
+  <div id="pantalla-resultados" class="tarjeta" hidden>
+    <h2 id="mensaje-final" class="mensaje-especial">¡Enhorabuena!</h2>
+
+    <div class="resumen">
+      <div class="dato"><span id="res-aciertos">0</span>Aciertos</div>
+      <div class="dato"><span id="res-fallos">0</span>Fallos</div>
+      <div class="dato"><span id="res-porcentaje">0%</span>Acierto</div>
+      <div class="dato"><span id="res-hechas">0</span>Operaciones</div>
+      <div class="dato dato-ancho"><span id="res-tiempo">00:00</span>Tiempo total</div>
+    </div>
+
+    <h3>Operaciones falladas</h3>
+    <ul id="lista-falladas" class="lista-operaciones"></ul>
+
+    <div class="botones">
+      <button id="btn-repetir" class="boton boton-principal">Repetir</button>
+      <button id="btn-volver" class="boton boton-secundario">Volver a configuración</button>
+    </div>
+  </div>
+
+
+  <!-- El script va al final para que la página ya esté cargada -->
+  <script src="script.js"></script>
+</body>
+</html>
